@@ -1,5 +1,5 @@
 <resources>
     <string name="app_name">RSS Manager</string>
-    <string name="add_rss">ADD a RSS</string>
+    <string name="add_rss">Add a RSS</string>
     <string name="show_rss_list">Show RSS list</string>
 </resources>

@@ -10,4 +10,69 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="fr.unicaen.info.dnr2i.rssapplication.AddActivity">
 
+    <TextView
+        android:text="@string/title_add_rss"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/textViewTitleAddRss"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
+
+    <TextView
+        android:text="@string/new_rss_feed_url"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textViewNewFeedURL"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:layout_below="@+id/textViewTitleAddRss"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="40dp" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+
+        android:id="@+id/editTextNewFeedURL"
+        android:hint="@string/placeholder_rss_feed_url"
+        android:layout_below="@+id/textViewNewFeedURL"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="13dp"
+        android:inputType="textUri"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:text="@string/new_rss_feed_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textViewNewFeedName"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:layout_below="@+id/editTextNewFeedURL"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="13dp" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="text"
+        android:ems="10"
+        android:id="@+id/editTextNewFeedName"
+        android:hint="@string/placeholder_rss_feed_name"
+        android:layout_marginTop="13dp"
+        android:layout_below="@+id/textViewNewFeedName"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true" />
+
+    <Button
+        android:text="@string/btn_rss_save"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="150dp"
+        android:id="@+id/btnSave"
+        style="@android:style/Widget.Button"
+        android:onClick="addRssFeed" />
+
 </RelativeLayout>

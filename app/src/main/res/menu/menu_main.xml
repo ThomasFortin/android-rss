@@ -2,10 +2,10 @@
 <menu xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:title="@string/show_rss_list"
+    <item android:title="@string/title_show_rss_list"
         android:id="@+id/menu_show"
         android:visible="true" />
-    <item android:title="@string/add_rss"
+    <item android:title="@string/title_add_rss"
         android:id="@+id/menu_add"
         android:visible="true" />
 </menu>

@@ -1,5 +1,10 @@
 <resources>
     <string name="app_name">RSS Manager</string>
-    <string name="add_rss">Add a RSS</string>
-    <string name="show_rss_list">Show RSS list</string>
+    <string name="title_show_rss_list">Show RSS list</string>
+    <string name="title_add_rss">Add a RSS feed</string>
+    <string name="new_rss_feed_url">New RSS feed URL :</string>
+    <string name="placeholder_rss_feed_url">RSS feed URL</string>
+    <string name="new_rss_feed_name">New RSS feed name :</string>
+    <string name="placeholder_rss_feed_name">RSS feed name</string>
+    <string name="btn_rss_save">Save</string>
 </resources>

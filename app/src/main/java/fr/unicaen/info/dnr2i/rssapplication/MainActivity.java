@@ -1,5 +1,6 @@
 package fr.unicaen.info.dnr2i.rssapplication;
 
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -10,17 +11,21 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     ListView mListView;
-    String[] titles = new String[]{
+
+    // DATA TEST
+    private String[] titles = new String[]{
             "Chèvre", "Bouquetin", "Cygne", "Tigre",
             "Écureuil", "Ratel", "Chien", "Paresseux",
             "Pie", "Chat", "Lion", "Dindon"
     };
 
-    String[] descriptions = new String[]{
+    /*
+    private String[] descriptions = new String[]{
             "Une belle chèvre", "Un superbe bouquetin", "Un très beau cygne", "Un tigre originaire du Bengale",
             "Agile et adore les noisettes", "Blaireau intrépide et inconscient", "Le meilleur ami de l'Homme", "Heeeeuu..",
             "Y a une pie, dans le poirier..", "Trois petits chats", "Roi de la jungle", "Glou glou glou glou"
     };
+    */
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
 
         mListView = (ListView) findViewById(R.id.listViewFeeds);
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(MainActivity.this,
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(MainActivity.this,
                 android.R.layout.simple_list_item_1, titles);
         mListView.setAdapter(adapter);
     }

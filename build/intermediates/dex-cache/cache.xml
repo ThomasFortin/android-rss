@@ -61,7 +61,7 @@
         jumboMode="true"
         optimize="true"
         revision="24.0.3"
-        sha1="230dcd6ef059d7fc97f473dae42b2bd46f91e0cd">
+        sha1="4b14f062f19509b86d7468a19cb13e634e2e429b">
         <dex dex="/home/thomas/Documents/Master/M2/Android/android-rss/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_420481eb5a3f64e1c9d8161203c062242d211c15/classes.dex" />
     </item>
     <item

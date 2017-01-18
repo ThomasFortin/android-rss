@@ -25,7 +25,7 @@ public class AddActivity extends AppCompatActivity {
 
         // Display of a toast to confirm the add
         Context context = getApplicationContext();
-        String confirmText = "RSS feed added.";
+        String confirmText = getString(R.string.confirm_add_toast);
         int duration = Toast.LENGTH_SHORT;
 
         Toast confirmToast = Toast.makeText(context, confirmText, duration);

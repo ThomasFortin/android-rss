@@ -10,4 +10,40 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="fr.unicaen.info.dnr2i.rssapplication.MainActivity">
 
+    <TextView
+        android:text="@string/title_list_rss"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/textViewTitleListRss"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
+
+    <ListView
+        android:id="@+id/listViewFeeds"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textViewTitleListRss"
+        android:textStyle="bold" />
+
+    <!--
+    <TextView
+        android:id="@+id/textViewListItemDesc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/black"
+        android:layout_alignStart="@+id/textViewListItemTitle"
+        android:layout_below="@+id/textViewListItemTitle"
+        tools:text="@string/test_desc" />
+
+    <TextView
+        android:id="@+id/textViewListItemTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/black"
+        android:textStyle="bold"
+        tools:text="@string/test_title"
+        android:layout_below="@+id/textViewTitleListRss"
+        android:layout_alignParentStart="true" />
+       -->
 </RelativeLayout>

@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
     ListView mListView;
     RssReaderManager dbM;
 
-    // DATA TEST
+    // DATA TEST USED by generateDevBd()
     private String[] titles = new String[]{
             "Chèvre", "Bouquetin", "Cygne", "Tigre",
             "Écureuil", "Ratel", "Chien", "Paresseux",
@@ -26,14 +26,6 @@ public class MainActivity extends AppCompatActivity {
     };
 
     private RssFeed[] feeds;
-
-    /*
-    private String[] descriptions = new String[]{
-            "Une belle chèvre", "Un superbe bouquetin", "Un très beau cygne", "Un tigre originaire du Bengale",
-            "Agile et adore les noisettes", "Blaireau intrépide et inconscient", "Le meilleur ami de l'Homme", "Heeeeuu..",
-            "Y a une pie, dans le poirier..", "Trois petits chats", "Roi de la jungle", "Glou glou glou glou"
-    };
-    */
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,7 +58,10 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
-    //Just used in first dev test
+    /**
+     * Method used to generate a test db when none already exist
+     * @deprecated This method should not exist in final build, it's only purpose is to test the apps.
+     */
     public void generateDevBd() {
         this.dbM.open();
         String url;
@@ -85,28 +80,10 @@ public class MainActivity extends AppCompatActivity {
         this.dbM.close();
     }
 
-    public void addFeed(View view) {
-        //HAVE TO GET DATA FROM EACH SPECIFIC FIELD OF THE ADD FORM
-        //TextView url = (TextView) findViewById(R.id.
-        String url = "http://chevre.rss.xml"; //content of a specific field
-        String name = "Chèvre"; //content of a specific field
-        String description = "ce flux est une chèvre"; //content of a specific field
-        String link = "http://chevre.com"; //content of a specific field
-        RssFeed feed = new RssFeed(url, name, description, link);
-
-        this.dbM.open();
-        feed = new RssFeed("http://cochon.rss.xml", "Cochon", "ce flux est un cochon", "http://cochon.com");
-        this.dbM.addFeed(feed);
-        this.dbM.close();
-    }
-
-    public void getFeedData(View view) {
-        //public static Cursor getOneFeedByUrl(SQLiteDatabase db, String url) {
-        this.dbM.open();
-        Cursor feed = this.dbM.getAllFeed();
-        this.dbM.close();
-    }
-
+    /**
+     * Method used to generate to get all the feeds name in an array
+     * @return titles <String[]> Array containing every feeds name
+     */
     private String[] getAllFeedsName() {
         String[] titles = new String[this.feeds.length];
         int i=0;
@@ -117,6 +94,10 @@ public class MainActivity extends AppCompatActivity {
         return titles;
     }
 
+    /**
+     * Method used to synchronize and create object from the content in db
+     * It filed the attr this.feeds, create rssFeed object, rssItem object and link them to the corresponding rssFeed.
+     */
     private void initFeedsFromDb() {
         this.dbM.open();
         //init feeds variable
@@ -169,7 +150,5 @@ public class MainActivity extends AppCompatActivity {
         cF.close();
         this.dbM.close();
     }
-
-
 
 }

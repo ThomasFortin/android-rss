@@ -38,6 +38,7 @@ public class RssReaderManager {
 
     /**
      * Method used to add a new Feed in the database
+     * @param feed <RssItem> contain the instance of the new feed to add in db
      */
     public void addFeed(RssFeed feed) {
         ContentValues values = new ContentValues();
@@ -51,18 +52,16 @@ public class RssReaderManager {
 
     /**
      * Method used to add a new Item in the database
-     * @param title <String> The title of the new item
-     * @param description <String> The description of the new item
-     * @param link <String> The link of the new item
-     * @param pubDate <String> The publication date of the new item
-     * @param feed <String> The url of the associated Feed (Foreign Key)
+     * @param item <RssItem> contain the instance of the new item to add in db
+     * @param feed <String> url of the feed where the item belong
+     *
      */
-    public void addItem(String title, String description, String link, String pubDate, String feed) {
+    public void addItem(RssItem item, String feed) {
         ContentValues values = new ContentValues();
-        values.put(FeedEntry.T1_C1_NAME, title);
-        values.put(FeedEntry.T1_C2_NAME, description);
-        values.put(FeedEntry.T1_C3_NAME, link);
-        values.put(FeedEntry.T1_C4_NAME, pubDate);
+        values.put(FeedEntry.T1_C1_NAME, item.getTitle());
+        values.put(FeedEntry.T1_C2_NAME, item.getDescription());
+        values.put(FeedEntry.T1_C3_NAME, item.getLink());
+        values.put(FeedEntry.T1_C4_NAME, item.getPubDate());
         values.put(FeedEntry.T1_C5_NAME, feed);
 
         this.db.insert(FeedEntry.TABLE1_NAME, null, values);

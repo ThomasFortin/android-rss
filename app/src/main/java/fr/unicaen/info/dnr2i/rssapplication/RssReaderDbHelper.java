@@ -25,7 +25,7 @@ public class RssReaderDbHelper extends SQLiteOpenHelper {
                     FeedEntry.T1_C1_NAME + " VARCHAR(255)," +
                     FeedEntry.T1_C2_NAME + " TEXT," +
                     FeedEntry.T1_C3_NAME + " VARCHAR(255)," +
-                    FeedEntry.T1_C4_NAME + " VARCHAR(255))," +
+                    FeedEntry.T1_C4_NAME + " VARCHAR(255)," +
                     FeedEntry.T1_C5_NAME + " VARCHAR(255)," +
                     "FOREIGN KEY(" + FeedEntry.T1_C5_NAME + ") REFERENCES " + FeedEntry.TABLE2_NAME + "(" + FeedEntry.T2_C1_NAME + "));";
 

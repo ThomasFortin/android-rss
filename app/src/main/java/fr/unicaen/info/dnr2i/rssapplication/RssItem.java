@@ -1,3 +1,5 @@
+package fr.unicaen.info.dnr2i.rssapplication;
+
 public class RssItem {
     int id;
     String title;

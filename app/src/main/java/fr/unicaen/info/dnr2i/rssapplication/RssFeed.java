@@ -1,3 +1,5 @@
+package fr.unicaen.info.dnr2i.rssapplication;
+
 import java.util.List;
 
 public class RssFeed {
@@ -53,4 +55,6 @@ public class RssFeed {
     public void setItems(List<RssItem> items) {
         this.items = items;
     }
+
+    public void addItem(RssItem item) { this.items.add(item); }
 }

@@ -1,24 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_feed"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="fr.unicaen.info.dnr2i.rssapplication.FeedActivity">
-
-    <TextView
-        android:text="@string/title_list_rss"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:id="@+id/textViewTitleListRss"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
-
+    android:padding="10dp"
+    >
     <android.support.v4.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/swipe_refresh_layout"
         android:layout_width="match_parent"
@@ -26,10 +12,46 @@
         android:layout_below="@+id/textViewTitleListRss">
 
         <ListView
-            android:id="@+id/listViewFeedNews"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:id="@+id/listViewRssItems"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
 
     </android.support.v4.widget.SwipeRefreshLayout>
 
+    <ImageView
+        android:id="@+id/imageRssItemImage"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        tools:background="#AAA"
+        android:contentDescription="@string/rss_feed_image_desc" />
+
+    <TextView
+        android:id="@+id/textViewRssItemName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/black"
+        android:layout_marginStart="10dp"
+        android:layout_toEndOf="@+id/imageRssItemImage"
+        android:layout_alignTop="@+id/imageRssItemImage"
+        android:textStyle="bold"
+        tools:text="RSS feed item title" />
+
+    <TextView
+        android:id="@+id/textViewRssItemLink"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/colorPrimary"
+        android:layout_alignStart="@+id/textViewRssItemName"
+        android:layout_below="@+id/textViewRssItemName"
+        android:textStyle="bold"
+        tools:text="http://www.example.com" />
+
+    <TextView
+        android:id="@+id/textViewRssItemDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/black"
+        android:layout_alignStart="@+id/textViewRssItemLink"
+        android:layout_below="@+id/textViewRssItemLink"
+        tools:text="RSS feed item description. Here is the description attribute of the element." />
 </RelativeLayout>

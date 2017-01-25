@@ -39,14 +39,6 @@ public class AddActivity extends AppCompatActivity {
     }
 
     public void addRssFeed(View view) {
-        // Display of a toast to confirm the add
-        Context context = getApplicationContext();
-        String confirmText = getString(R.string.confirm_add_toast);
-        int duration = Toast.LENGTH_SHORT;
-
-        Toast confirmToast = Toast.makeText(context, confirmText, duration);
-        confirmToast.show();
-
         EditText viewFeedUrl = (EditText) findViewById(R.id.editTextNewFeedURL);
         String url = viewFeedUrl.getText().toString();
 
@@ -59,5 +51,17 @@ public class AddActivity extends AppCompatActivity {
 
         RssFeed feed = new RssFeed(url, name, description, link);
         this.dbM.addFeed(feed);
+
+        // Once the RSS feed is added to DB, we redirect to the list
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+
+        // Display of a toast to confirm the add
+        Context context = getApplicationContext();
+        String confirmText = getString(R.string.confirm_add_toast);
+        int duration = Toast.LENGTH_SHORT;
+
+        Toast confirmToast = Toast.makeText(context, confirmText, duration);
+        confirmToast.show();
     }
 }

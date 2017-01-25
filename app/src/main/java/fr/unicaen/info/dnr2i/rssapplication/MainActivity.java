@@ -53,10 +53,10 @@ public class MainActivity extends AppCompatActivity {
     private String[] getAllFeedsName() {
         List<RssFeed> feeds = this.dbM.getAllFeeds();
         String[] titles = new String[feeds.size()];
-        int i=0;
+        int i= feeds.size() - 1;
         for (RssFeed feed : feeds) {
             titles[i] = feed.getName();
-            i++;
+            i--;
         }
         return titles;
     }

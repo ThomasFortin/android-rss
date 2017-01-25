@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class AddActivity extends AppCompatActivity {
@@ -37,7 +39,6 @@ public class AddActivity extends AppCompatActivity {
     }
 
     public void addRssFeed(View view) {
-
         // Display of a toast to confirm the add
         Context context = getApplicationContext();
         String confirmText = getString(R.string.confirm_add_toast);
@@ -45,5 +46,13 @@ public class AddActivity extends AppCompatActivity {
 
         Toast confirmToast = Toast.makeText(context, confirmText, duration);
         confirmToast.show();
+
+        EditText viewFeedUrl = (EditText) findViewById(R.id.editTextNewFeedURL);
+        String url = viewFeedUrl.getText().toString();
+
+        EditText viewFeedName = (EditText) findViewById(R.id.editTextNewFeedName);
+        String name = viewFeedName.getText().toString();
+
+
     }
 }

@@ -19,10 +19,17 @@
         android:id="@+id/textViewTitleListRss"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
 
-    <ListView
-        android:id="@+id/listViewFeedNews"
-        android:layout_width="wrap_content"
+    <android.support.v4.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/swipe_refresh_layout"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textViewTitleListRss" />
+        android:layout_below="@+id/textViewTitleListRss">
+
+        <ListView
+            android:id="@+id/listViewFeedNews"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+    </android.support.v4.widget.SwipeRefreshLayout>
 
 </RelativeLayout>

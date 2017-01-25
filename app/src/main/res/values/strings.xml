@@ -13,4 +13,5 @@
 
     <string name="test_title">Title test</string>
     <string name="test_desc">Description de test</string>
+    <string name="rss_feed_image_desc">RSS feed image</string>
 </resources>

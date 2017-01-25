@@ -13,30 +13,41 @@ import static fr.unicaen.info.dnr2i.rssapplication.RssReaderContract.FeedEntry;
 public class RssReaderDbHelper extends SQLiteOpenHelper {
 
     private static final String SQL_CREATE_FEED =
-            "CREATE TABLE " + FeedEntry.TABLE2_NAME + " (" +
-            FeedEntry.T2_C1_NAME + " VARCHAR(255) PRIMARY KEY," +
-            FeedEntry.T2_C2_NAME + " VARCHAR(255)," +
-            FeedEntry.T2_C3_NAME + " VARCHAR(255)," +
-            FeedEntry.T2_C4_NAME + " VARCHAR(255));";
+            "CREATE TABLE " + FeedEntry.TNAME_FEED + " (" +
+            FeedEntry.FEED_CNAME_URL + " VARCHAR(255) PRIMARY KEY," +
+            FeedEntry.FEED_CNAME_NAME + " VARCHAR(255)," +
+            FeedEntry.ITEM_CNAME_DESC + " VARCHAR(255)," +
+            FeedEntry.ITEM_CNAME_LINK + " VARCHAR(255));";
 
     private static final String SQL_CREATE_ITEM =
-            "CREATE TABLE " + FeedEntry.TABLE1_NAME + " (" +
+            "CREATE TABLE " + FeedEntry.TNAME_ITEM + " (" +
                     FeedEntry._ID + " INTEGER PRIMARY KEY," +
-                    FeedEntry.T1_C1_NAME + " VARCHAR(255)," +
-                    FeedEntry.T1_C2_NAME + " TEXT," +
-                    FeedEntry.T1_C3_NAME + " VARCHAR(255)," +
-                    FeedEntry.T1_C4_NAME + " VARCHAR(255)," +
-                    FeedEntry.T1_C5_NAME + " VARCHAR(255)," +
-                    "FOREIGN KEY(" + FeedEntry.T1_C5_NAME + ") REFERENCES " + FeedEntry.TABLE2_NAME + "(" + FeedEntry.T2_C1_NAME + "));";
+                    FeedEntry.ITEM_CNAME_TITLE + " VARCHAR(255)," +
+                    FeedEntry.FEED_CNAME_DESC + " TEXT," +
+                    FeedEntry.FEED_CNAME_LINK + " VARCHAR(255)," +
+                    FeedEntry.ITEM_CNAME_DATE + " VARCHAR(255)," +
+                    FeedEntry.ITEM_CNAME_FEED + " VARCHAR(255)," +
+                    "FOREIGN KEY(" + FeedEntry.ITEM_CNAME_FEED + ") REFERENCES " + FeedEntry.TNAME_FEED + "(" + FeedEntry.FEED_CNAME_URL + "));";
 
     private static final String SQL_DELETE_ENTRIES =
-            "DROP TABLE IF EXISTS " + FeedEntry.TABLE1_NAME + "; " +
-            "DROP TABLE IF EXISTS " + FeedEntry.TABLE2_NAME + ";";
+            "DROP TABLE IF EXISTS " + FeedEntry.TNAME_ITEM + "; " +
+            "DROP TABLE IF EXISTS " + FeedEntry.TNAME_FEED + ";";
 
+    private static RssReaderDbHelper sInstance;
     public static final int DATABASE_VERSION = 1;
     public static final String DATABASE_NAME = "rssApp.db";
 
-    public RssReaderDbHelper(Context context) {
+    //singleton
+    public static synchronized RssReaderDbHelper getInstance(Context context) {
+
+        if (sInstance == null) {
+            sInstance = new RssReaderDbHelper(context.getApplicationContext());
+        }
+        return sInstance;
+
+    }
+
+    private RssReaderDbHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 

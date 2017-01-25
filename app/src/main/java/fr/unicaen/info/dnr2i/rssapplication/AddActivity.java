@@ -11,10 +11,14 @@ import android.widget.Toast;
 
 public class AddActivity extends AppCompatActivity {
 
+    private RssReaderManager dbM;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add);
+
+        this.dbM = new RssReaderManager(this);
     }
 
     @Override

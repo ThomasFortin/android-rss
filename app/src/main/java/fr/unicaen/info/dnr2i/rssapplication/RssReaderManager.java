@@ -115,7 +115,6 @@ public class RssReaderManager {
     private List<RssItem> makeItemArrayWithCursor(Cursor c) {
         //init items variable
         RssItem item;
-        int id;
         String title;
         String descItem;
         String linkItem;
@@ -126,12 +125,11 @@ public class RssReaderManager {
         if (c.moveToFirst()) {
             int i = 0;
             do {
-                id = c.getInt(c.getColumnIndex(FeedEntry._ID));
                 title = c.getString(c.getColumnIndex(FeedEntry.ITEM_CNAME_TITLE));
                 descItem = c.getString(c.getColumnIndex(FeedEntry.ITEM_CNAME_DESC));
                 linkItem = c.getString(c.getColumnIndex(FeedEntry.ITEM_CNAME_LINK));
                 pubDate = c.getString(c.getColumnIndex(FeedEntry.ITEM_CNAME_DATE));
-                item = new RssItem(id, title, descItem, linkItem, pubDate);
+                item = new RssItem(title, descItem, linkItem, pubDate);
                 items.add(item);
             } while (c.moveToNext());
         }

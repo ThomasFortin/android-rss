@@ -159,6 +159,9 @@ public class RssReaderManager {
         values.put(FeedEntry.FEED_CNAME_LINK, feed.getLink());
 
         this.db.insert(FeedEntry.TNAME_FEED, null, values);
+
+        //add the new items
+        this.addItemsToFeed(feed);
     }
 
     /**
@@ -176,6 +179,13 @@ public class RssReaderManager {
         values.put(FeedEntry.ITEM_CNAME_FEED, feed);
 
         this.db.insert(FeedEntry.TNAME_ITEM, null, values);
+    }
+
+    public void addItemsToFeed(RssFeed feed) {
+        List<RssItem> items = feed.getItems();
+        for(RssItem item : items) {
+            this.addItem(item, feed.getUrl());
+        }
     }
 
     //R OPERATIONS  ---------------------------------------
@@ -204,6 +214,22 @@ public class RssReaderManager {
         List<RssFeed> feeds = this.makeFeedsArrayWithCursor(cursor);
 
         return feeds;
+    }
+
+    /**
+     * Method used to check if a feed exist in the db
+     * @param url <String> The url of the feed (Primary Key)
+     * @return <boolean>
+     */
+    public boolean feedExist(String url) {
+        String query = "SELECT * from " + FeedEntry.TNAME_FEED + " WHERE " + FeedEntry.FEED_CNAME_URL + " = " + url + ";";
+
+        Cursor cursor = this.db.rawQuery(query, null);
+
+        if (cursor.moveToFirst()) {
+            return true;
+        }
+        return false;
     }
 
     /**
@@ -276,30 +302,23 @@ public class RssReaderManager {
      * Method used to update a Feed
      * The unchanged param have to be set to null when calling. Update the URL WILL delete every associated item.
      * @param actualUrl <String> The URL of the Feed to update
-     * @param newUrl <String> [OPTIONAL, null if not updated] The new url of the feed
-     * @param name <String> [OPTIONAL, null if not updated] The new name of the feed
-     * @param description <String> [OPTIONAL, null if not updated] The new description of the feed
-     * @param link <String> [OPTIONAL, null if not updated] The new link of the feed
+     * @param feed <RssFeed> The isntance of the new RssFeed
      */
-    public void updateFeed(String actualUrl, String newUrl, String name, String description, String link) {
+    public void updateFeed(String actualUrl, RssFeed feed) {
         ContentValues values = new ContentValues();
-        if (newUrl != null) {
-            deleteItemOfFeed(newUrl);
-            values.put(FeedEntry.FEED_CNAME_URL, newUrl);
-        }
-        if (name != null) {
-            values.put(FeedEntry.FEED_CNAME_NAME, name);
-        }
-        if (description != null) {
-            values.put(FeedEntry.FEED_CNAME_DESC, description);
-        }
-        if (link != null) {
-            values.put(FeedEntry.FEED_CNAME_LINK, link);
-        }
+        deleteItemOfFeed(actualUrl);
+
+        values.put(FeedEntry.FEED_CNAME_URL, feed.getUrl());
+        values.put(FeedEntry.FEED_CNAME_NAME, feed.getName());
+        values.put(FeedEntry.FEED_CNAME_DESC, feed.getDescription());
+        values.put(FeedEntry.FEED_CNAME_LINK, feed.getLink());
 
         String selection = FeedEntry.FEED_CNAME_URL + "=" + actualUrl;
 
         this.db.update(FeedEntry.TNAME_FEED, values, selection, null);
+
+        //add the new items
+        this.addItemsToFeed(feed);
     }
 
     //D OPERATIONS  ---------------------------------------

@@ -16,15 +16,15 @@ public class RssReaderDbHelper extends SQLiteOpenHelper {
             "CREATE TABLE " + FeedEntry.TNAME_FEED + " (" +
             FeedEntry.FEED_CNAME_URL + " VARCHAR(255) PRIMARY KEY," +
             FeedEntry.FEED_CNAME_NAME + " VARCHAR(255)," +
-            FeedEntry.ITEM_CNAME_DESC + " VARCHAR(255)," +
-            FeedEntry.ITEM_CNAME_LINK + " VARCHAR(255));";
+            FeedEntry.FEED_CNAME_DESC + " VARCHAR(255)," +
+            FeedEntry.FEED_CNAME_LINK + " VARCHAR(255));";
 
     private static final String SQL_CREATE_ITEM =
             "CREATE TABLE " + FeedEntry.TNAME_ITEM + " (" +
                     FeedEntry._ID + " INTEGER PRIMARY KEY," +
                     FeedEntry.ITEM_CNAME_TITLE + " VARCHAR(255)," +
-                    FeedEntry.FEED_CNAME_DESC + " TEXT," +
-                    FeedEntry.FEED_CNAME_LINK + " VARCHAR(255)," +
+                    FeedEntry.ITEM_CNAME_DESC + " TEXT," +
+                    FeedEntry.ITEM_CNAME_LINK + " VARCHAR(255)," +
                     FeedEntry.ITEM_CNAME_DATE + " VARCHAR(255)," +
                     FeedEntry.ITEM_CNAME_FEED + " VARCHAR(255)," +
                     "FOREIGN KEY(" + FeedEntry.ITEM_CNAME_FEED + ") REFERENCES " + FeedEntry.TNAME_FEED + "(" + FeedEntry.FEED_CNAME_URL + "));";

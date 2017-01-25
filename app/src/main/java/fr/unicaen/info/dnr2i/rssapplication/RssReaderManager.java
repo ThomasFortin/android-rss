@@ -91,8 +91,8 @@ public class RssReaderManager {
                 //get the feed
                 url = c.getString(c.getColumnIndex(FeedEntry.FEED_CNAME_URL));
                 name = c.getString(c.getColumnIndex(FeedEntry.FEED_CNAME_NAME));
-                description = c.getString(c.getColumnIndex(FeedEntry.ITEM_CNAME_DESC));
-                link = c.getString(c.getColumnIndex(FeedEntry.ITEM_CNAME_LINK));
+                description = c.getString(c.getColumnIndex(FeedEntry.FEED_CNAME_DESC));
+                link = c.getString(c.getColumnIndex(FeedEntry.FEED_CNAME_LINK));
                 feed = new RssFeed(url, name, description, link);
                 feeds.add(feed);
 
@@ -128,8 +128,8 @@ public class RssReaderManager {
             do {
                 id = c.getInt(c.getColumnIndex(FeedEntry._ID));
                 title = c.getString(c.getColumnIndex(FeedEntry.ITEM_CNAME_TITLE));
-                descItem = c.getString(c.getColumnIndex(FeedEntry.FEED_CNAME_DESC));
-                linkItem = c.getString(c.getColumnIndex(FeedEntry.FEED_CNAME_LINK));
+                descItem = c.getString(c.getColumnIndex(FeedEntry.ITEM_CNAME_DESC));
+                linkItem = c.getString(c.getColumnIndex(FeedEntry.ITEM_CNAME_LINK));
                 pubDate = c.getString(c.getColumnIndex(FeedEntry.ITEM_CNAME_DATE));
                 item = new RssItem(id, title, descItem, linkItem, pubDate);
                 items.add(item);
@@ -155,8 +155,8 @@ public class RssReaderManager {
         ContentValues values = new ContentValues();
         values.put(FeedEntry.FEED_CNAME_URL, feed.getUrl());
         values.put(FeedEntry.FEED_CNAME_NAME, feed.getName());
-        values.put(FeedEntry.ITEM_CNAME_DESC, feed.getDescription());
-        values.put(FeedEntry.ITEM_CNAME_LINK, feed.getLink());
+        values.put(FeedEntry.FEED_CNAME_DESC, feed.getDescription());
+        values.put(FeedEntry.FEED_CNAME_LINK, feed.getLink());
 
         this.db.insert(FeedEntry.TNAME_FEED, null, values);
     }
@@ -170,8 +170,8 @@ public class RssReaderManager {
     public void addItem(RssItem item, String feed) {
         ContentValues values = new ContentValues();
         values.put(FeedEntry.ITEM_CNAME_TITLE, item.getTitle());
-        values.put(FeedEntry.FEED_CNAME_DESC, item.getDescription());
-        values.put(FeedEntry.FEED_CNAME_LINK, item.getLink());
+        values.put(FeedEntry.ITEM_CNAME_DESC, item.getDescription());
+        values.put(FeedEntry.ITEM_CNAME_LINK, item.getLink());
         values.put(FeedEntry.ITEM_CNAME_DATE, item.getPubDate());
         values.put(FeedEntry.ITEM_CNAME_FEED, feed);
 
@@ -242,8 +242,8 @@ public class RssReaderManager {
         String[] projection = {
                 FeedEntry._ID,
                 FeedEntry.ITEM_CNAME_TITLE,
-                FeedEntry.FEED_CNAME_DESC,
-                FeedEntry.FEED_CNAME_LINK,
+                FeedEntry.ITEM_CNAME_DESC,
+                FeedEntry.ITEM_CNAME_LINK,
                 FeedEntry.ITEM_CNAME_DATE,
                 FeedEntry.ITEM_CNAME_FEED
         };
@@ -291,10 +291,10 @@ public class RssReaderManager {
             values.put(FeedEntry.FEED_CNAME_NAME, name);
         }
         if (description != null) {
-            values.put(FeedEntry.ITEM_CNAME_DESC, description);
+            values.put(FeedEntry.FEED_CNAME_DESC, description);
         }
         if (link != null) {
-            values.put(FeedEntry.ITEM_CNAME_LINK, link);
+            values.put(FeedEntry.FEED_CNAME_LINK, link);
         }
 
         String selection = FeedEntry.FEED_CNAME_URL + "=" + actualUrl;

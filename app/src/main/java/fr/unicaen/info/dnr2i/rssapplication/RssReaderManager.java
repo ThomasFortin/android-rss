@@ -183,8 +183,10 @@ public class RssReaderManager {
 
     public void addItemsToFeed(RssFeed feed) {
         List<RssItem> items = feed.getItems();
-        for(RssItem item : items) {
-            this.addItem(item, feed.getUrl());
+        if (items != null) {
+            for (RssItem item : items) {
+                this.addItem(item, feed.getUrl());
+            }
         }
     }
 

@@ -53,6 +53,11 @@ public class AddActivity extends AppCompatActivity {
         EditText viewFeedName = (EditText) findViewById(R.id.editTextNewFeedName);
         String name = viewFeedName.getText().toString();
 
+        //temporary: to change with rss wrapper response
+        String description = "All the news on "+name;
+        String link = "http://"+name+".com";
 
+        RssFeed feed = new RssFeed(url, name, description, link);
+        this.dbM.addFeed(feed);
     }
 }

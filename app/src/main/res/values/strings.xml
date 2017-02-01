@@ -19,4 +19,8 @@
     <string name="edit_rss_feed">Edit this RSS feed</string>
 
     <string name="settings">Settings</string>
+    <string name="settings_autoupdate">Automatically</string>
+    <string name="settings_title">Data update</string>
+    <string name="settings_wifi_update">Only in Wi-Fi</string>
+    <string name="settings_never_update">Never</string>
 </resources>

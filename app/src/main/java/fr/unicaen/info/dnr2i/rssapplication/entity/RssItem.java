@@ -1,4 +1,4 @@
-package fr.unicaen.info.dnr2i.rssapplication;
+package fr.unicaen.info.dnr2i.rssapplication.entity;
 
 public class RssItem {
     String title;

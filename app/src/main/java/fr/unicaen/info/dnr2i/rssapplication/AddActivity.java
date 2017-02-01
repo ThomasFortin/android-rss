@@ -10,6 +10,9 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import fr.unicaen.info.dnr2i.rssapplication.db.RssReaderManager;
+import fr.unicaen.info.dnr2i.rssapplication.entity.RssFeed;
+
 public class AddActivity extends AppCompatActivity {
 
     private RssReaderManager dbM;

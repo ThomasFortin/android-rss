@@ -12,6 +12,10 @@ import android.widget.ListView;
 
 import java.util.List;
 
+import fr.unicaen.info.dnr2i.rssapplication.adapter.RssFeedAdapter;
+import fr.unicaen.info.dnr2i.rssapplication.db.RssReaderManager;
+import fr.unicaen.info.dnr2i.rssapplication.entity.RssFeed;
+
 public class MainActivity extends AppCompatActivity {
 
     private ListView rssFeedsListView;
@@ -53,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem menuItem) {
         switch (menuItem.getItemId()) {
             case R.id.action_menu_add:
-                startActivity(new Intent(this, MainActivity.class));
+                startActivity(new Intent(this, AddActivity.class));
                 return true;
             case R.id.action_menu_settings:
                 startActivity(new Intent(this, SettingsActivity.class));

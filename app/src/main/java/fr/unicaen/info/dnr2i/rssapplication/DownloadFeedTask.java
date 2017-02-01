@@ -9,11 +9,13 @@ import java.net.URL;
 import java.util.ArrayList;
 
 import de.nava.informa.core.ChannelIF;
-import de.nava.informa.core.ItemIF;
 import de.nava.informa.core.ParseException;
 import de.nava.informa.impl.basic.ChannelBuilder;
 import de.nava.informa.impl.basic.Item;
 import de.nava.informa.parsers.FeedParser;
+import fr.unicaen.info.dnr2i.rssapplication.db.RssReaderManager;
+import fr.unicaen.info.dnr2i.rssapplication.entity.RssFeed;
+import fr.unicaen.info.dnr2i.rssapplication.entity.RssItem;
 
 public class DownloadFeedTask extends AsyncTask<String, Void, Boolean> {
 

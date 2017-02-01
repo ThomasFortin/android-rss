@@ -1,10 +1,10 @@
-package fr.unicaen.info.dnr2i.rssapplication;
+package fr.unicaen.info.dnr2i.rssapplication.db;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import static fr.unicaen.info.dnr2i.rssapplication.RssReaderContract.FeedEntry;
+import static fr.unicaen.info.dnr2i.rssapplication.db.RssReaderContract.FeedEntry;
 
 /**
  * Created by plabadille on 18/01/17.

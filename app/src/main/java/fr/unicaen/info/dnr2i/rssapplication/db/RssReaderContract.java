@@ -1,4 +1,4 @@
-package fr.unicaen.info.dnr2i.rssapplication;
+package fr.unicaen.info.dnr2i.rssapplication.db;
 
 import android.provider.BaseColumns;
 

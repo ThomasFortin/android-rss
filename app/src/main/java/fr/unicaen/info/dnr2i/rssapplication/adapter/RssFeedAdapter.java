@@ -1,8 +1,7 @@
-package fr.unicaen.info.dnr2i.rssapplication;
+package fr.unicaen.info.dnr2i.rssapplication.adapter;
 
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,13 +10,12 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.lang.reflect.Array;
 import java.util.List;
 
+import fr.unicaen.info.dnr2i.rssapplication.EditActivity;
 import fr.unicaen.info.dnr2i.rssapplication.R;
-import fr.unicaen.info.dnr2i.rssapplication.RssFeed;
-import fr.unicaen.info.dnr2i.rssapplication.RssItem;
-import fr.unicaen.info.dnr2i.rssapplication.RssItemAdapter;
+import fr.unicaen.info.dnr2i.rssapplication.entity.RssFeed;
+import fr.unicaen.info.dnr2i.rssapplication.db.RssReaderManager;
 
 import static fr.unicaen.info.dnr2i.rssapplication.R.mipmap.ic_launcher;
 

@@ -1,16 +1,19 @@
-package fr.unicaen.info.dnr2i.rssapplication;
+package fr.unicaen.info.dnr2i.rssapplication.db;
 
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
-import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static fr.unicaen.info.dnr2i.rssapplication.RssReaderContract.FeedEntry;
+import fr.unicaen.info.dnr2i.rssapplication.db.RssReaderDbHelper;
+import fr.unicaen.info.dnr2i.rssapplication.entity.RssFeed;
+import fr.unicaen.info.dnr2i.rssapplication.entity.RssItem;
+
+import static fr.unicaen.info.dnr2i.rssapplication.db.RssReaderContract.FeedEntry;
 
 /**
  * A class to manage the database with CRUD operations

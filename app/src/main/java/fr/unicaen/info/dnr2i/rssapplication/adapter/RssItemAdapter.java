@@ -1,16 +1,16 @@
-package fr.unicaen.info.dnr2i.rssapplication;
+package fr.unicaen.info.dnr2i.rssapplication.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.List;
 
-import static fr.unicaen.info.dnr2i.rssapplication.R.mipmap.ic_launcher;
+import fr.unicaen.info.dnr2i.rssapplication.R;
+import fr.unicaen.info.dnr2i.rssapplication.entity.RssItem;
 
 /**
  * Created by thomas on 25/01/17.

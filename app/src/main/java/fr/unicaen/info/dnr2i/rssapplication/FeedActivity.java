@@ -8,6 +8,10 @@ import android.widget.ListView;
 import java.util.ArrayList;
 import java.util.List;
 
+import fr.unicaen.info.dnr2i.rssapplication.adapter.RssItemAdapter;
+import fr.unicaen.info.dnr2i.rssapplication.db.RssReaderManager;
+import fr.unicaen.info.dnr2i.rssapplication.entity.RssItem;
+
 public class FeedActivity extends AppCompatActivity implements SwipeRefreshLayout.OnRefreshListener {
 
     ListView rssItemsListView;
@@ -23,7 +27,7 @@ public class FeedActivity extends AppCompatActivity implements SwipeRefreshLayou
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_feed);
 
-        mSwipeRefresh = (SwipeRefreshLayout) findViewById(R.id.swipe_refresh_layout);
+        mSwipeRefresh = (SwipeRefreshLayout) findViewById(R.id.swipeRefreshLayout);
         mSwipeRefresh.setOnRefreshListener(this);
         rssItemsListView = (ListView) findViewById(R.id.listViewRssItems);
 

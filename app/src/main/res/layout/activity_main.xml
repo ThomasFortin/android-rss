@@ -25,24 +25,4 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/textViewTitleListRss" />
 
-    <!--
-    <TextView
-        android:id="@+id/textViewListItemDesc"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@android:color/black"
-        android:layout_alignStart="@+id/textViewListItemTitle"
-        android:layout_below="@+id/textViewListItemTitle"
-        tools:text="@string/test_desc" />
-
-    <TextView
-        android:id="@+id/textViewListItemTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@android:color/black"
-        android:textStyle="bold"
-        tools:text="@string/test_title"
-        android:layout_below="@+id/textViewTitleListRss"
-        android:layout_alignParentStart="true" />
-       -->
 </RelativeLayout>

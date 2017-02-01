@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp"
+    >
+
+    <ImageButton
+        android:id="@+id/imgBtnEdit"
+        android:layout_width="40dip"
+        android:layout_height="40dip"
+        app:srcCompat="@android:drawable/ic_menu_edit"
+        style="@android:style/Widget.ImageButton"
+        tools:ignore="ContentDescription"
+        android:layout_alignParentTop="true"
+        android:layout_toStartOf="@+id/imgBtnRemove"
+        android:layout_marginEnd="8dp" />
+
+    <ImageButton
+        android:id="@+id/imgBtnRemove"
+        android:layout_width="40dip"
+        android:layout_height="40dip"
+        app:srcCompat="@android:drawable/ic_delete"
+        style="@android:style/Widget.ImageButton"
+        tools:ignore="ContentDescription"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:id="@+id/textViewRssFeedName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="RSS feed item title"
+        android:textStyle="bold"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="11dp" />
+
+</RelativeLayout>

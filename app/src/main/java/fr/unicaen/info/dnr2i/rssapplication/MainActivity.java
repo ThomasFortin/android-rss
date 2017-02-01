@@ -12,8 +12,9 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    private ListView mListView;
+    private ListView rssFeedsListView;
     private RssReaderManager dbM;
+    RssFeedAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,12 +24,13 @@ public class MainActivity extends AppCompatActivity {
         //open the db manager
         this.dbM = new RssReaderManager(this);
 
-        mListView = (ListView) findViewById(R.id.listViewFeeds);
+        List<RssFeed> feeds = this.dbM.getAllFeeds();
+
+        rssFeedsListView = (ListView) findViewById(R.id.listViewFeeds);
 
         //display the feeds
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(MainActivity.this,
-                android.R.layout.simple_list_item_1, this.getAllFeedsName());
-        mListView.setAdapter(adapter);
+        adapter = new RssFeedAdapter(MainActivity.this, android.R.layout.simple_list_item_1, feeds);
+        rssFeedsListView.setAdapter(adapter);
     }
 
     @Override

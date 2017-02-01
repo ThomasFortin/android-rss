@@ -1,9 +1,6 @@
 package fr.unicaen.info.dnr2i.rssapplication;
 
 import android.content.Context;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
-import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,8 +18,8 @@ import static fr.unicaen.info.dnr2i.rssapplication.R.mipmap.ic_launcher;
 
 public class RssItemAdapter extends ArrayAdapter<RssItem> {
 
-    public RssItemAdapter(Context context, int resource, List<RssItem> feeds) {
-        super(context, resource, feeds);
+    public RssItemAdapter(Context context, int resource, List<RssItem> items) {
+        super(context, resource, items);
     }
 
     @Override

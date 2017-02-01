@@ -29,12 +29,15 @@ public class AddActivity extends AppCompatActivity {
     }
 
     public boolean onOptionsItemSelected(MenuItem menuItem) {
-        if (menuItem.getItemId() == R.id.action_menu_list) {
-            Intent intent = new Intent(this, MainActivity.class);
-            startActivity(intent);
-            return true;
+        switch (menuItem.getItemId()) {
+            case R.id.action_menu_list:
+                startActivity(new Intent(this, MainActivity.class));
+                return true;
+            case R.id.action_menu_settings:
+                startActivity(new Intent(this, SettingsActivity.class));
+                return true;
         }
-        return false;
+        return super.onOptionsItemSelected(menuItem);
     }
 
     public void addRssFeed(View view) {

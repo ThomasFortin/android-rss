@@ -43,12 +43,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public boolean onOptionsItemSelected(MenuItem menuItem) {
-        if (menuItem.getItemId() == R.id.action_menu_add) {
-            Intent intent = new Intent(this, AddActivity.class);
-            startActivity(intent);
-            return true;
+        switch (menuItem.getItemId()) {
+            case R.id.action_menu_add:
+                startActivity(new Intent(this, AddActivity.class));
+                return true;
+            case R.id.action_menu_settings:
+                startActivity(new Intent(this, SettingsActivity.class));
+                return true;
         }
-        return false;
+        return super.onOptionsItemSelected(menuItem);
     }
 
     /**

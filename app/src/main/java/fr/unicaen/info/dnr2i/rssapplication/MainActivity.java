@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.ListView;
@@ -34,6 +35,15 @@ public class MainActivity extends AppCompatActivity {
         //display the feeds
         adapter = new RssFeedAdapter(MainActivity.this, android.R.layout.simple_list_item_1, feeds);
         rssFeedsListView.setAdapter(adapter);
+        rssFeedsListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                RssFeed rssFeed = (RssFeed) parent.getItemAtPosition(position);
+                Intent i = new Intent(getApplicationContext(), FeedActivity.class);
+                i.putExtra("url", rssFeed.getUrl());
+                startActivity(i);
+            }
+        });
     }
 
     @Override

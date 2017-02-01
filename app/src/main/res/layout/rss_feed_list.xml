@@ -5,7 +5,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="10dp"
+    android:descendantFocusability="blocksDescendants"
     >
+
+    <ImageView
+        android:id="@+id/imageRssItemImage"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        tools:background="#AAA"
+        android:contentDescription="@string/rss_feed_image_desc" />
 
     <ImageButton
         android:id="@+id/imgBtnEdit"
@@ -35,8 +43,10 @@
         tools:text="RSS feed item title"
         android:textStyle="bold"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="11dp" />
+        android:layout_marginStart="10dp"
+        android:layout_alignBottom="@+id/imgBtnEdit"
+        android:layout_toEndOf="@+id/imageRssItemImage"
+        android:layout_marginBottom="10dp"
+        tools:ignore="RelativeOverlap" />
 
 </RelativeLayout>

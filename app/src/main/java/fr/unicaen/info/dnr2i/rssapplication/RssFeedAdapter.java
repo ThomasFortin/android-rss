@@ -47,12 +47,15 @@ public class RssFeedAdapter extends ArrayAdapter<RssFeed> {
 
         if (rssFeedViewHolder == null) {
             rssFeedViewHolder = new RssFeedAdapter.RssFeedViewHolder();
+            rssFeedViewHolder.image = (ImageView) convertView.findViewById(R.id.imageRssItemImage);
             rssFeedViewHolder.name = (TextView) convertView.findViewById(R.id.textViewRssFeedName);
 
             convertView.setTag(rssFeedViewHolder);
         }
 
         RssFeed rssFeed = getItem(position);
+
+        rssFeedViewHolder.image.setImageResource(ic_launcher);
         rssFeedViewHolder.name.setText(rssFeed.getName());
 
         //button listener:
@@ -106,6 +109,7 @@ public class RssFeedAdapter extends ArrayAdapter<RssFeed> {
     }
 
     public class RssFeedViewHolder {
+        public ImageView image;
         public TextView name;
     }
 }

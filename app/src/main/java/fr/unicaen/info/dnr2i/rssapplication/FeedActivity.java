@@ -11,8 +11,10 @@ import java.util.List;
 public class FeedActivity extends AppCompatActivity implements SwipeRefreshLayout.OnRefreshListener {
 
     ListView rssItemsListView;
+    private RssReaderManager dbM;
     SwipeRefreshLayout mSwipeRefresh;
     RssItemAdapter adapter;
+    String url;
 
     List<RssItem> rssItems = this.generateTestRssItems();
 
@@ -28,6 +30,9 @@ public class FeedActivity extends AppCompatActivity implements SwipeRefreshLayou
         // mAdapter = new ArrayAdapter<RssItem>(FeedActivity.this, android.R.layout.simple_list_item_1, rssItems);
         // rssItemsListView.setAdapter(mAdapter);
 
+        this.dbM = new RssReaderManager(this);
+        this.url = getIntent().getExtras().getString("url");
+
         adapter = new RssItemAdapter(FeedActivity.this, android.R.layout.simple_list_item_1, rssItems);
         rssItemsListView.setAdapter(adapter);
     }
@@ -39,6 +44,7 @@ public class FeedActivity extends AppCompatActivity implements SwipeRefreshLayou
             public void run() {
 
                 rssItems.clear();
+                new DownloadFeedTask(dbM).doInBackground(url);
 
                 rssItems.add(new RssItem("Abricot", "L'abricot bien juteux du Sud de la France comme aime Evrard", "http://www.abricot.fr/rss.xml", "28/01/2017"));
 

@@ -1,6 +1,7 @@
 package fr.unicaen.info.dnr2i.rssapplication;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -27,10 +28,12 @@ import static fr.unicaen.info.dnr2i.rssapplication.R.mipmap.ic_launcher;
 public class RssFeedAdapter extends ArrayAdapter<RssFeed> {
 
     private RssReaderManager dbM;
+    private Context context;
 
     public RssFeedAdapter(Context context, int resource, List<RssFeed> feeds) {
         super(context, resource, feeds);
         this.dbM = new RssReaderManager(context);
+        this.context = context;
     }
 
     @Override
@@ -57,6 +60,7 @@ public class RssFeedAdapter extends ArrayAdapter<RssFeed> {
 
         //button listener:
         this.handleFeedDeletion(convertView, position);
+        this.handleFeedEdition(convertView, position);
 
         return convertView;
     }
@@ -76,6 +80,28 @@ public class RssFeedAdapter extends ArrayAdapter<RssFeed> {
                 remove(currentFeed);
             }
         });
+    }
+
+    private void handleFeedEdition(View convertView, int position) {
+        ImageButton editButton = (ImageButton) convertView.findViewById(R.id.imgBtnEdit);
+        editButton.setTag(position);
+        editButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int position = (Integer) view.getTag();
+                // Access the row position here to get the correct data item
+                RssFeed currentFeed = getItem(position);
+
+                startNewEditActivity(currentFeed);
+
+            }
+        });
+    }
+
+    public void startNewEditActivity(RssFeed currentFeed) {
+        Intent intent = new Intent(this.context, EditActivity.class);
+        intent.putExtra("url", currentFeed.getUrl());
+        this.context.startActivity(intent);
     }
 
     public RssReaderManager getDbMInstance() {

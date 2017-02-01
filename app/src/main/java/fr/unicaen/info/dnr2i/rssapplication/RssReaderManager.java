@@ -197,7 +197,7 @@ public class RssReaderManager {
      * @return RssFeed the answer of the query
      */
     public RssFeed getOneFeedByUrl(String url) {
-        String query = "SELECT * from " + FeedEntry.TNAME_FEED + " WHERE " + FeedEntry.FEED_CNAME_URL + " = " + url + ";";
+        String query = "SELECT * from " + FeedEntry.TNAME_FEED + " WHERE " + FeedEntry.FEED_CNAME_URL + " = \"" + url + "\";";
 
         Cursor cursor = this.db.rawQuery(query, null);
 
@@ -302,24 +302,33 @@ public class RssReaderManager {
     /**
      * Method used to update a Feed
      * The unchanged param have to be set to null when calling. Update the URL WILL delete every associated item.
-     * @param actualUrl <String> The URL of the Feed to update
      * @param feed <RssFeed> The isntance of the new RssFeed
      */
-    public void updateFeed(String actualUrl, RssFeed feed) {
+    public void updateFeed(RssFeed feed) {
         ContentValues values = new ContentValues();
-        deleteItemOfFeed(actualUrl);
+        deleteItemOfFeed(feed.getUrl());
 
         values.put(FeedEntry.FEED_CNAME_URL, feed.getUrl());
         values.put(FeedEntry.FEED_CNAME_NAME, feed.getName());
         values.put(FeedEntry.FEED_CNAME_DESC, feed.getDescription());
         values.put(FeedEntry.FEED_CNAME_LINK, feed.getLink());
 
-        String selection = FeedEntry.FEED_CNAME_URL + "=" + actualUrl;
+        String selection = FeedEntry.FEED_CNAME_URL + "=" + feed.getUrl();
 
         this.db.update(FeedEntry.TNAME_FEED, values, selection, null);
 
         //add the new items
         this.addItemsToFeed(feed);
+    }
+
+    public void updateNameOfFeed(String url, String name) {
+        ContentValues values = new ContentValues();
+
+        values.put(FeedEntry.FEED_CNAME_NAME, name);
+
+        String selection = FeedEntry.FEED_CNAME_URL + "=" + url;
+
+        this.db.update(FeedEntry.TNAME_FEED, values, selection, null);
     }
 
     //D OPERATIONS  ---------------------------------------

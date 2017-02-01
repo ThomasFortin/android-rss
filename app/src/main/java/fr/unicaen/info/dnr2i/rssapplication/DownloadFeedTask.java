@@ -57,7 +57,7 @@ public class DownloadFeedTask extends AsyncTask<String, Void, Boolean> {
             ));
         }
         rssFeed.setItems(items);
-        dbM.updateFeed(rssFeed.getUrl(), rssFeed);
+        dbM.updateFeed(rssFeed);
         return true;
     }
     private InputStream downloadUrl(String urlString) throws IOException {

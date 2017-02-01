@@ -51,30 +51,4 @@ public class MainActivity extends AppCompatActivity {
         return false;
     }
 
-    /**
-     * Method used to generate to get all the feeds name in an array
-     * @return titles <String[]> Array containing every feeds name
-     */
-    private String[] getAllFeedsName() {
-        List<RssFeed> feeds = this.dbM.getAllFeeds();
-        String[] titles = new String[feeds.size()];
-        int i= feeds.size() - 1;
-        for (RssFeed feed : feeds) {
-            titles[i] = feed.getName();
-            i--;
-        }
-        return titles;
-    }
-
-/*    public void deleteFeed(View view) {
-        Log.d("test", "success");
-
-        ImageButton delButton = (ImageButton) view.findViewById(R.id.imgBtnEdit);
-        // Cache row position inside the button using `setTag`
-        delButton.get
-    }*/
-
-    /*bah t'as juste à créer la fonction dans la MainActivity et foutre ce qu'il faut dedans, en rajoutant bien le "onClick" sur le boutons
-    mais je crois que là différent y a une histoire de "OnItemClicked" ou je sais pas quoi sur la liste*/
-
 }

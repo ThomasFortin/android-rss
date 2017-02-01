@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -331,7 +332,7 @@ public class RssReaderManager {
         //first we need to delete associated item
         deleteItemOfFeed(url);
         //then we can delete the feed
-        String selection = FeedEntry.FEED_CNAME_NAME + " = ?";
+        String selection = FeedEntry.FEED_CNAME_URL + " = ?";
         String[] selectionArgs = { url };
 
         this.db.delete(FeedEntry.TNAME_FEED, selection, selectionArgs);

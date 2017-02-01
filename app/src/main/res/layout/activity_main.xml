@@ -12,12 +12,12 @@
     tools:context="fr.unicaen.info.dnr2i.rssapplication.MainActivity">
 
     <TextView
+        android:id="@+id/textViewTitleListRss"
         android:text="@string/title_list_rss"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:id="@+id/textViewTitleListRss"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
 
     <ListView

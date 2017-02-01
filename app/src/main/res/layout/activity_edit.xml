@@ -11,17 +11,17 @@ android:paddingTop="@dimen/activity_vertical_margin"
 tools:context="fr.unicaen.info.dnr2i.rssapplication.EditActivity">
 
 <TextView
-    android:text="Edit a RSS feed"
+    android:id="@+id/textViewTitleEditRss"
+    android:text="@string/title_edit_rss_feed"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_alignParentTop="true"
     android:layout_centerHorizontal="true"
-    android:id="@+id/textViewTitleEditRss"
     android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
 
 <TextView
     android:id="@+id/textViewEditFeedURL"
-    android:text="Rss feed url"
+    android:text="@string/label_feed_url"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:textColor="@android:color/black"
@@ -31,11 +31,10 @@ tools:context="fr.unicaen.info.dnr2i.rssapplication.EditActivity">
     android:layout_marginTop="40dp" />
 
 <EditText
+    android:id="@+id/editTextEditFeedURL"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:ems="10"
-
-    android:id="@+id/editTextEditFeedURL"
     android:hint="@string/placeholder_rss_feed_url"
     android:layout_below="@+id/textViewEditFeedURL"
     android:layout_alignParentStart="true"
@@ -44,21 +43,21 @@ tools:context="fr.unicaen.info.dnr2i.rssapplication.EditActivity">
     android:layout_alignParentEnd="true" />
 
 <TextView
-    android:text="Rss feed name"
+    android:id="@+id/textViewEditFeedName"
+    android:text="@string/label_feed_name"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:id="@+id/textViewEditFeedName"
     android:textAppearance="@style/TextAppearance.AppCompat.Body1"
     android:layout_below="@+id/editTextEditFeedURL"
     android:layout_alignParentStart="true"
     android:layout_marginTop="13dp" />
 
 <EditText
+    android:id="@+id/editTextEditFeedName"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:inputType="text"
     android:ems="10"
-    android:id="@+id/editTextEditFeedName"
     android:hint="@string/placeholder_rss_feed_name"
     android:layout_marginTop="13dp"
     android:layout_below="@+id/textViewEditFeedName"
@@ -66,13 +65,13 @@ tools:context="fr.unicaen.info.dnr2i.rssapplication.EditActivity">
     android:layout_alignParentEnd="true" />
 
 <Button
+    android:id="@+id/btnSave"
     android:text="@string/btn_rss_save"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_alignParentBottom="true"
     android:layout_centerHorizontal="true"
     android:layout_marginBottom="150dp"
-    android:id="@+id/btnSave"
     style="@android:style/Widget.Button"
     android:onClick="editRssFeed" />
 

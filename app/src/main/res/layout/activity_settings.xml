@@ -8,32 +8,32 @@
 
 
     <TextView
+        android:id="@+id/textViewTitleSettings"
         android:text="@string/settings_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/textViewTitleSettings"
         android:gravity="center_horizontal"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
 
     <Switch
+        android:id="@+id/switchAutoUpdate"
         android:text="@string/settings_autoupdate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/switch_auto_update"
         android:layout_marginTop="25dp" />
 
     <Switch
+        android:id="@+id/switchWifiUpdate"
         android:text="@string/settings_wifi_update"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/switch_wifi_update"
         android:layout_marginTop="25dp" />
 
     <Switch
+        android:id="@+id/switchNeverUpdate"
         android:text="@string/settings_never_update"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/switch_never_update"
         android:layout_marginTop="25dp" />
 
 </LinearLayout>

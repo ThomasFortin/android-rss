@@ -1,23 +1,42 @@
 <resources>
+    <!-- App Name -->
     <string name="app_name">RSS Manager</string>
+
+    <!-- Titles -->
     <string name="title_show_rss_list">Show RSS list</string>
     <string name="title_add_rss">Add a RSS feed</string>
-    <string name="new_rss_feed_url">New RSS feed URL :</string>
-    <string name="placeholder_rss_feed_url">RSS feed URL</string>
-    <string name="new_rss_feed_name">New RSS feed name :</string>
-    <string name="placeholder_rss_feed_name">RSS feed name</string>
-    <string name="btn_rss_save">Save</string>
-    <string name="confirm_add_toast">RSS feed added.</string>
-
+    <string name="title_edit_rss_feed">Edit a RSS feed</string>
     <string name="title_list_rss">List of RSS feeds</string>
 
-    <string name="test_title">Title test</string>
-    <string name="test_desc">Description de test</string>
-    <string name="rss_feed_image_desc">RSS feed image</string>
+    <!-- Form labels -->
+    <string name="label_feed_url">RSS feed URL :</string>
+    <string name="label_feed_name">RSS feed name :</string>
 
+    <!-- Form placeholders -->
+    <string name="placeholder_rss_feed_url">RSS feed URL</string>
+    <string name="placeholder_rss_feed_name">RSS feed name</string>
+
+
+
+    <!-- Save button -->
+    <string name="btn_rss_save">Save</string>
+
+    <!-- Toasts -->
+    <string name="confirm_add_toast">RSS feed added.</string>
+
+    <!-- Managing feeds -->
     <string name="remove_rss_feed">Remove this RSS feed</string>
     <string name="edit_rss_feed">Edit this RSS feed</string>
 
+    <!-- Test data -->
+    <string name="test_title">Title test</string>
+    <string name="test_desc">Description de test</string>
+    <string name="rss_feed_image_desc">RSS feed image</string>
+    <string name="test_item_name">RSS feed item title</string>
+    <string name="test_item_description">RSS feed item description. Here is the description attribute of the element.</string>
+    <string name="test_item_url">http://www.example.com</string>
+
+    <!-- Settings -->
     <string name="settings">Settings</string>
     <string name="settings_autoupdate">Automatically</string>
     <string name="settings_title">Data update</string>

@@ -40,7 +40,7 @@
         android:id="@+id/textViewRssFeedName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:text="RSS feed item title"
+        tools:text="@string/test_item_name"
         android:textStyle="bold"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1"
         android:layout_marginStart="10dp"

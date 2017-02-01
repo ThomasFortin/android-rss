@@ -13,7 +13,7 @@
         android:textColor="@android:color/black"
         android:layout_marginStart="10dp"
         android:textStyle="bold"
-        tools:text="RSS feed item title"
+        tools:text="@string/test_item_name"
         tools:ignore="RelativeOverlap" />
 
     <TextView
@@ -24,7 +24,7 @@
         android:layout_alignStart="@+id/textViewRssItemName"
         android:layout_below="@+id/textViewRssItemName"
         android:textStyle="bold"
-        tools:text="http://www.example.com" />
+        tools:text="@string/test_item_url" />
 
     <TextView
         android:id="@+id/textViewRssItemDescription"
@@ -33,6 +33,6 @@
         android:textColor="@android:color/black"
         android:layout_alignStart="@+id/textViewRssItemLink"
         android:layout_below="@+id/textViewRssItemLink"
-        tools:text="RSS feed item description. Here is the description attribute of the element." />
+        tools:text="@string/test_item_description" />
 
 </RelativeLayout>

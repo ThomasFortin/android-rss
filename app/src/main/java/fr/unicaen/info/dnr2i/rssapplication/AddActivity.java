@@ -8,7 +8,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 public class AddActivity extends AppCompatActivity {
@@ -45,11 +44,7 @@ public class AddActivity extends AppCompatActivity {
         EditText viewFeedName = (EditText) findViewById(R.id.editTextNewFeedName);
         String name = viewFeedName.getText().toString();
 
-        //temporary: to change with rss wrapper response
-        String description = "All the news on "+name;
-        String link = "http://"+name+".com";
-
-        RssFeed feed = new RssFeed(url, name, description, link);
+        RssFeed feed = new RssFeed(url, name, null, null);
         this.dbM.addFeed(feed);
 
         // Once the RSS feed is added to DB, we redirect to the list

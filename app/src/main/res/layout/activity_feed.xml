@@ -13,7 +13,8 @@
         android:id="@+id/swipe_refresh_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/textViewTitleListRss">
+        android:layout_below="@+id/textViewTitleListRss"
+        tools:ignore="UnknownIdInLayout">
 
         <ListView
             android:id="@+id/listViewRssItems"

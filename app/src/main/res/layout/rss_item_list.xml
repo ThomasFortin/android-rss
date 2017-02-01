@@ -6,21 +6,12 @@
     android:padding="10dp"
     >
 
-    <ImageView
-        android:id="@+id/imageRssItemImage"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        tools:background="#AAA"
-        android:contentDescription="@string/rss_feed_image_desc" />
-
     <TextView
         android:id="@+id/textViewRssItemName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@android:color/black"
         android:layout_marginStart="10dp"
-        android:layout_toEndOf="@+id/imageRssItemImage"
-        android:layout_alignTop="@+id/imageRssItemImage"
         android:textStyle="bold"
         tools:text="RSS feed item title"
         tools:ignore="RelativeOverlap" />

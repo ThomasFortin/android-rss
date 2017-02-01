@@ -33,7 +33,6 @@ public class RssItemAdapter extends ArrayAdapter<RssItem> {
 
         if (rssItemViewHolder == null) {
             rssItemViewHolder = new RssItemViewHolder();
-            rssItemViewHolder.image = (ImageView) convertView.findViewById(R.id.imageRssItemImage);
             rssItemViewHolder.title = (TextView) convertView.findViewById(R.id.textViewRssItemName);
             rssItemViewHolder.link = (TextView) convertView.findViewById(R.id.textViewRssItemLink);
             rssItemViewHolder.description = (TextView) convertView.findViewById(R.id.textViewRssItemDescription);
@@ -43,7 +42,6 @@ public class RssItemAdapter extends ArrayAdapter<RssItem> {
 
         RssItem rssItem = getItem(position);
 
-        rssItemViewHolder.image.setImageResource(ic_launcher);
         rssItemViewHolder.title.setText(rssItem.getTitle());
         rssItemViewHolder.link.setText(rssItem.getLink());
         rssItemViewHolder.description.setText(rssItem.getDescription());
@@ -55,6 +53,5 @@ public class RssItemAdapter extends ArrayAdapter<RssItem> {
         public TextView title;
         public TextView link;
         public TextView description;
-        public ImageView image;
     }
 }

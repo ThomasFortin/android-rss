@@ -17,4 +17,6 @@
 
     <string name="remove_rss_feed">Remove this RSS feed</string>
     <string name="edit_rss_feed">Edit this RSS feed</string>
+
+    <string name="settings">Settings</string>
 </resources>

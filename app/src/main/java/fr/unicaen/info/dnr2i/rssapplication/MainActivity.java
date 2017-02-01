@@ -1,15 +1,13 @@
 package fr.unicaen.info.dnr2i.rssapplication;
 
 import android.content.Intent;
+import android.support.test.espresso.core.deps.guava.collect.Lists;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.ImageButton;
 import android.widget.ListView;
 
 import java.util.List;
@@ -28,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
         //open the db manager
         this.dbM = new RssReaderManager(this);
 
-        List<RssFeed> feeds = this.dbM.getAllFeeds();
+        List<RssFeed> feeds = Lists.reverse(this.dbM.getAllFeeds());
 
         rssFeedsListView = (ListView) findViewById(R.id.listViewFeeds);
 

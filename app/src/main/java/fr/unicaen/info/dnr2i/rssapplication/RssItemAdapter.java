@@ -13,6 +13,8 @@ import android.widget.TextView;
 
 import java.util.List;
 
+import static fr.unicaen.info.dnr2i.rssapplication.R.mipmap.ic_launcher;
+
 /**
  * Created by thomas on 25/01/17.
  */
@@ -27,7 +29,7 @@ public class RssItemAdapter extends ArrayAdapter<RssItem> {
     public View getView(int position, View convertView, ViewGroup parent) {
 
         if (convertView == null) {
-            convertView = LayoutInflater.from(getContext()).inflate(R.layout.activity_feed, parent, false);
+            convertView = LayoutInflater.from(getContext()).inflate(R.layout.rss_item_list, parent, false);
         }
 
         RssItemViewHolder rssItemViewHolder = (RssItemViewHolder) convertView.getTag();
@@ -44,7 +46,7 @@ public class RssItemAdapter extends ArrayAdapter<RssItem> {
 
         RssItem rssItem = getItem(position);
 
-        rssItemViewHolder.image.setImageDrawable(new ColorDrawable(Color.GREEN));
+        rssItemViewHolder.image.setImageResource(ic_launcher);
         rssItemViewHolder.title.setText(rssItem.getTitle());
         rssItemViewHolder.link.setText(rssItem.getLink());
         rssItemViewHolder.description.setText(rssItem.getDescription());

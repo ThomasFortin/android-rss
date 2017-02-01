@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="10dp"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="10dip"
+    tools:context=".FeedActivity"
     >
+
     <android.support.v4.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/swipe_refresh_layout"
         android:layout_width="match_parent"
@@ -17,41 +21,4 @@
             android:layout_height="match_parent" />
 
     </android.support.v4.widget.SwipeRefreshLayout>
-
-    <ImageView
-        android:id="@+id/imageRssItemImage"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        tools:background="#AAA"
-        android:contentDescription="@string/rss_feed_image_desc" />
-
-    <TextView
-        android:id="@+id/textViewRssItemName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@android:color/black"
-        android:layout_marginStart="10dp"
-        android:layout_toEndOf="@+id/imageRssItemImage"
-        android:layout_alignTop="@+id/imageRssItemImage"
-        android:textStyle="bold"
-        tools:text="RSS feed item title" />
-
-    <TextView
-        android:id="@+id/textViewRssItemLink"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/colorPrimary"
-        android:layout_alignStart="@+id/textViewRssItemName"
-        android:layout_below="@+id/textViewRssItemName"
-        android:textStyle="bold"
-        tools:text="http://www.example.com" />
-
-    <TextView
-        android:id="@+id/textViewRssItemDescription"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@android:color/black"
-        android:layout_alignStart="@+id/textViewRssItemLink"
-        android:layout_below="@+id/textViewRssItemLink"
-        tools:text="RSS feed item description. Here is the description attribute of the element." />
 </RelativeLayout>

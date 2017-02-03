@@ -1,14 +1,19 @@
 package fr.unicaen.info.dnr2i.rssapplication;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.ConnectivityManager;
+import android.net.Uri;
 import android.support.annotation.Keep;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
+import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -43,6 +48,14 @@ public class FeedActivity extends AppCompatActivity implements SwipeRefreshLayou
         rssItems = dbM.getAllItemFromFeed(url);
         adapter = new RssItemAdapter(FeedActivity.this, android.R.layout.simple_list_item_1, rssItems);
         rssItemsListView.setAdapter(adapter);
+        rssItemsListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                RssItem rssItem = (RssItem) parent.getItemAtPosition(position);
+                Intent browser = new Intent(Intent.ACTION_VIEW, Uri.parse(rssItem.getLink()));
+                startActivity(browser);
+            }
+        });
     }
 
     @Override

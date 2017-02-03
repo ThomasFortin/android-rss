@@ -2,19 +2,17 @@ package fr.unicaen.info.dnr2i.rssapplication;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.Uri;
-import android.support.annotation.Keep;
+import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
-import java.net.URI;
-import java.util.ArrayList;
+import java.net.InetAddress;
 import java.util.List;
 
 import fr.unicaen.info.dnr2i.rssapplication.adapter.RssItemAdapter;
@@ -39,11 +37,12 @@ public class FeedActivity extends AppCompatActivity implements SwipeRefreshLayou
         mSwipeRefresh.setOnRefreshListener(this);
         rssItemsListView = (ListView) findViewById(R.id.listViewRssItems);
 
-        // mAdapter = new ArrayAdapter<RssItem>(FeedActivity.this, android.R.layout.simple_list_item_1, rssItems);
-        // rssItemsListView.setAdapter(mAdapter);
-
         this.dbM = new RssReaderManager(this);
         this.url = getIntent().getExtras().getString("url");
+
+        if (canAutomaticallyLoad()) {
+            download();
+        }
 
         rssItems = dbM.getAllItemFromFeed(url);
         adapter = new RssItemAdapter(FeedActivity.this, android.R.layout.simple_list_item_1, rssItems);
@@ -60,6 +59,23 @@ public class FeedActivity extends AppCompatActivity implements SwipeRefreshLayou
 
     @Override
     public void onRefresh() {
+        download();
+    }
+
+    @Override
+    public void onContentChanged() {
+        super.onContentChanged();
+        View empty = findViewById(R.id.empty);
+        ListView list = (ListView) findViewById(R.id.listViewRssItems);
+        list.setEmptyView(empty);
+    }
+
+    protected void refreshList() {
+        rssItems.addAll(dbM.getAllItemFromFeed(url));
+        adapter.notifyDataSetChanged();
+    }
+
+    protected void download() {
         new DownloadFeedTask(dbM) {
             @Override
             protected void onPostExecute(Boolean result) {
@@ -70,21 +86,27 @@ public class FeedActivity extends AppCompatActivity implements SwipeRefreshLayou
         mSwipeRefresh.setRefreshing(true);
     }
 
-    public static List<RssItem> generateTestRssItems(){
-        List<RssItem> items = new ArrayList<RssItem>();
-        items.add(new RssItem("Carotte", "La carotte rend aimable, paraît-il !", "http://www.carotte.fr/rss.xml", "21/12/2016"));
-        items.add(new RssItem("Pomme de terre", "La pomme de terre, c'est aussi bon en purée qu'à la poêle !", "http://www.patate.com/rss.xml", "29/12/2016"));
-        items.add(new RssItem("Salade", "Plutôt laitue ? Mâche, Roquette ? Il y en a pour tous les goûts !", "http://www.salade.fr/rss.xml", "07/01/2017"));
-        items.add(new RssItem("Tomate", "La tomate est-elle un fruit ou un légume ? Telle est la question..", "http://www.tomate.fr/rss.xml", "16/01/2017"));
-        items.add(new RssItem("Radis", "Le radis, c'est bon avec du pain beurre.. Parce que ça a goût de pain beurre, c'est tout.", "http://www.radis.fr/rss.xml", "26/01/2017"));
-        items.add(new RssItem("Courgette", "Manger de la courgette, c'est comme manger de l'eau !", "http://www.courgette.fr/rss.xml", "26/01/2017"));
-        items.add(new RssItem("Haricot", "C'est bon les haricots, avec un peu de flageollets c'est pas mauvais hein.", "http://www.haricot.fr/rss.xml", "27/01/2017"));
-        items.add(new RssItem("Citrouille", "Une bonne soupe de citrouille un soir d'hiver en face de la cheminée, c'est toujours bien plaisant.", "http://www.citrouille.fr/rss.xml", "28/01/2017"));
-        return items;
-    }
+    protected boolean canAutomaticallyLoad() {
+        boolean hasInternet;
+        try {
+            InetAddress ipAddr = InetAddress.getByName("google.com"); //You can replace it with your name
+            hasInternet = !ipAddr.equals("");
+        } catch (Exception e) {
+            hasInternet = false;
+        }
 
-    protected void refreshList() {
-        rssItems.addAll(dbM.getAllItemFromFeed(url));
-        adapter.notifyDataSetChanged();
+        if (!hasInternet) {
+            return false;
+        }
+
+        ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        boolean isWifiConnected = connectivityManager
+                .getNetworkInfo(ConnectivityManager.TYPE_WIFI)
+                .isConnected();
+        SharedPreferences sharedPref = getSharedPreferences("network", 0);
+        int networkChoice = sharedPref.getInt("networkPreferences", NetworkPreferences.AUTOMATICALLY.ordinal());
+        return (networkChoice == NetworkPreferences.AUTOMATICALLY.ordinal()
+                || networkChoice == NetworkPreferences.WIFI_ONLY.ordinal() && isWifiConnected
+        );
     }
 }

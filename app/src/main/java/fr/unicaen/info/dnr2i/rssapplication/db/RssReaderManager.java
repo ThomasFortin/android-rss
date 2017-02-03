@@ -316,7 +316,7 @@ public class RssReaderManager {
         values.put(FeedEntry.FEED_CNAME_DESC, feed.getDescription());
         values.put(FeedEntry.FEED_CNAME_LINK, feed.getLink());
 
-        String selection = FeedEntry.FEED_CNAME_URL + "=" + feed.getUrl();
+        String selection = FeedEntry.FEED_CNAME_URL + "='" + feed.getUrl() + "'";
 
         this.db.update(FeedEntry.TNAME_FEED, values, selection, null);
 

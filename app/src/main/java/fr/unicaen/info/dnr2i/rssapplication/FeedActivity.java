@@ -1,8 +1,12 @@
 package fr.unicaen.info.dnr2i.rssapplication;
 
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.support.annotation.Keep;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -19,8 +23,7 @@ public class FeedActivity extends AppCompatActivity implements SwipeRefreshLayou
     SwipeRefreshLayout mSwipeRefresh;
     RssItemAdapter adapter;
     String url;
-
-    List<RssItem> rssItems = this.generateTestRssItems();
+    List<RssItem> rssItems;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,26 +40,21 @@ public class FeedActivity extends AppCompatActivity implements SwipeRefreshLayou
         this.dbM = new RssReaderManager(this);
         this.url = getIntent().getExtras().getString("url");
 
+        rssItems = dbM.getAllItemFromFeed(url);
         adapter = new RssItemAdapter(FeedActivity.this, android.R.layout.simple_list_item_1, rssItems);
         rssItemsListView.setAdapter(adapter);
     }
 
     @Override
     public void onRefresh() {
-        mSwipeRefresh.postDelayed(new Runnable() {
+        new DownloadFeedTask(dbM) {
             @Override
-            public void run() {
-
-                rssItems.clear();
-                new DownloadFeedTask(dbM).doInBackground(url);
-
-                rssItems.add(new RssItem("Abricot", "L'abricot bien juteux du Sud de la France comme aime Evrard", "http://www.abricot.fr/rss.xml", "28/01/2017"));
-
-                adapter.notifyDataSetChanged();
-
+            protected void onPostExecute(Boolean result) {
+                refreshList();
                 mSwipeRefresh.setRefreshing(false);
             }
-        }, 1000);
+        }.execute(url);
+        mSwipeRefresh.setRefreshing(true);
     }
 
     public static List<RssItem> generateTestRssItems(){
@@ -70,5 +68,10 @@ public class FeedActivity extends AppCompatActivity implements SwipeRefreshLayou
         items.add(new RssItem("Haricot", "C'est bon les haricots, avec un peu de flageollets c'est pas mauvais hein.", "http://www.haricot.fr/rss.xml", "27/01/2017"));
         items.add(new RssItem("Citrouille", "Une bonne soupe de citrouille un soir d'hiver en face de la cheminée, c'est toujours bien plaisant.", "http://www.citrouille.fr/rss.xml", "28/01/2017"));
         return items;
+    }
+
+    protected void refreshList() {
+        rssItems.addAll(dbM.getAllItemFromFeed(url));
+        adapter.notifyDataSetChanged();
     }
 }

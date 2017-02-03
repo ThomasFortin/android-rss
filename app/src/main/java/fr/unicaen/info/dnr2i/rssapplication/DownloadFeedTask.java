@@ -1,12 +1,19 @@
 package fr.unicaen.info.dnr2i.rssapplication;
 
+import android.content.Context;
 import android.os.AsyncTask;
+import android.util.Log;
+import android.widget.Toast;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.ProtocolException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.logging.Handler;
+import java.util.logging.LogRecord;
 
 import de.nava.informa.core.ChannelIF;
 import de.nava.informa.core.ParseException;
@@ -29,17 +36,32 @@ public class DownloadFeedTask extends AsyncTask<String, Void, Boolean> {
     protected Boolean doInBackground(String... params) {
         String urlName = params[0];
         InputStream is = null;
+        HttpURLConnection conn = null;
         try {
-            is = downloadUrl(urlName);
+            URL url = new URL(urlName);
+            conn = (HttpURLConnection) url.openConnection();
+            conn.setRequestMethod("GET");
+            int responseCode = conn.getResponseCode();
+            if (responseCode == HttpURLConnection.HTTP_OK) {
+                is = conn.getInputStream();
+            }
+        } catch (ProtocolException e) {
+            e.printStackTrace();
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
+        } finally {
+            if (conn != null) {
+                conn.disconnect();
+            }
         }
         if (is == null) {
             return false;
         }
         ChannelIF channel = null;
         try {
-            channel = FeedParser.parse(new ChannelBuilder(), is);
+            channel = FeedParser.parse(new ChannelBuilder(), urlName);
         } catch (IOException e) {
             e.printStackTrace();
         } catch (ParseException e) {
@@ -60,16 +82,7 @@ public class DownloadFeedTask extends AsyncTask<String, Void, Boolean> {
         }
         rssFeed.setItems(items);
         dbM.updateFeed(rssFeed);
+
         return true;
-    }
-    private InputStream downloadUrl(String urlString) throws IOException {
-        URL url = new URL(urlString);
-        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-        conn.setReadTimeout(10000);
-        conn.setConnectTimeout(15000);
-        conn.setRequestMethod("GET");
-        conn.setDoInput(true);
-        conn.connect();
-        return conn.getInputStream();
     }
 }

@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.Uri;
 import android.support.annotation.Keep;
+import android.content.SharedPreferences;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -19,6 +20,7 @@ import java.util.List;
 
 import fr.unicaen.info.dnr2i.rssapplication.adapter.RssItemAdapter;
 import fr.unicaen.info.dnr2i.rssapplication.db.RssReaderManager;
+import fr.unicaen.info.dnr2i.rssapplication.entity.NetworkPreferences;
 import fr.unicaen.info.dnr2i.rssapplication.entity.RssItem;
 
 public class FeedActivity extends AppCompatActivity implements SwipeRefreshLayout.OnRefreshListener {
@@ -46,6 +48,10 @@ public class FeedActivity extends AppCompatActivity implements SwipeRefreshLayou
         this.url = getIntent().getExtras().getString("url");
 
         rssItems = dbM.getAllItemFromFeed(url);
+        
+	SharedPreferences sharedPref = getSharedPreferences("network", 0);
+        int networkChoice = sharedPref.getInt("networkPreferences", NetworkPreferences.AUTOMATICALLY.ordinal());
+
         adapter = new RssItemAdapter(FeedActivity.this, android.R.layout.simple_list_item_1, rssItems);
         rssItemsListView.setAdapter(adapter);
         rssItemsListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {

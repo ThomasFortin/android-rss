@@ -19,10 +19,6 @@ import fr.unicaen.info.dnr2i.rssapplication.db.RssReaderManager;
 
 import static fr.unicaen.info.dnr2i.rssapplication.R.mipmap.ic_launcher;
 
-/**
- * Created by thomas on 01/02/17.
- */
-
 public class RssFeedAdapter extends ArrayAdapter<RssFeed> {
 
     private RssReaderManager dbM;

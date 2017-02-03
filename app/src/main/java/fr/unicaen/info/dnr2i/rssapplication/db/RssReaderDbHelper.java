@@ -6,10 +6,6 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import static fr.unicaen.info.dnr2i.rssapplication.db.RssReaderContract.FeedEntry;
 
-/**
- * Created by plabadille on 18/01/17.
- */
-
 public class RssReaderDbHelper extends SQLiteOpenHelper {
 
     private static final String SQL_CREATE_FEED =

@@ -2,10 +2,6 @@ package fr.unicaen.info.dnr2i.rssapplication.db;
 
 import android.provider.BaseColumns;
 
-/**
- * Created by plabadille on 18/01/17.
- */
-
 public final class RssReaderContract {
 
     private RssReaderContract() {}

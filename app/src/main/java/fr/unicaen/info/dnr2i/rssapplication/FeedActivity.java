@@ -4,19 +4,15 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.annotation.Keep;
-import android.content.SharedPreferences;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
-import java.net.InetAddress;
-import java.net.URI;
-import java.util.ArrayList;
 import java.util.List;
 
 import fr.unicaen.info.dnr2i.rssapplication.adapter.RssItemAdapter;
@@ -93,18 +89,15 @@ public class FeedActivity extends AppCompatActivity implements SwipeRefreshLayou
 
     protected boolean canAutomaticallyLoad() {
         boolean hasInternet;
-        try {
-            InetAddress ipAddr = InetAddress.getByName("google.com"); //You can replace it with your name
-            hasInternet = !ipAddr.equals("");
-        } catch (Exception e) {
-            hasInternet = false;
-        }
+        ConnectivityManager connectivityManager
+                = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        hasInternet = activeNetworkInfo != null && activeNetworkInfo.isConnected();
 
         if (!hasInternet) {
             return false;
         }
 
-        ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         boolean isWifiConnected = connectivityManager
                 .getNetworkInfo(ConnectivityManager.TYPE_WIFI)
                 .isConnected();

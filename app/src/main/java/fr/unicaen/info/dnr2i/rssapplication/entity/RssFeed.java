@@ -16,6 +16,10 @@ public class RssFeed {
         this.link = link;
     }
 
+    public RssFeed(String url, String name) {
+        this(url, name, null, null);
+    }
+
     public String getUrl() {
         return this.url;
     }

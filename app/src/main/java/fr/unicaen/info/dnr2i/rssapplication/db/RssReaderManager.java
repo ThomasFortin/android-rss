@@ -7,9 +7,9 @@ import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
-import fr.unicaen.info.dnr2i.rssapplication.db.RssReaderDbHelper;
 import fr.unicaen.info.dnr2i.rssapplication.entity.RssFeed;
 import fr.unicaen.info.dnr2i.rssapplication.entity.RssItem;
 
@@ -25,12 +25,6 @@ public class RssReaderManager {
 
     private SQLiteDatabase db;
     private RssReaderDbHelper rDbHelper;
-    // DATA TEST USED by generateDevBd()
-    private String[] titles = new String[]{
-            "Chèvre", "Bouquetin", "Cygne", "Tigre",
-            "Écureuil", "Ratel", "Chien", "Paresseux",
-            "Pie", "Chat", "Lion", "Dindon"
-    };
 
     public RssReaderManager(Context context) {
         this.rDbHelper = RssReaderDbHelper.getInstance(context);
@@ -52,19 +46,9 @@ public class RssReaderManager {
      * @deprecated This method should not exist in final build, it's only purpose is to test the apps.
      */
     private void generateDevBd() {
-        String url;
-        String name;
-        String description;
-        String link;
-        RssFeed feed;
-        for (int i=0; i<this.titles.length; i++) {
-            name = this.titles[i];
-            url = "http://"+name+".com/rss/"+name+".xml";
-            description = "All the news on the beautiful life of "+name;
-            link = "http://"+name+".com";
-            feed = new RssFeed(url, name, description, link);
-            this.addFeed(feed);
-        }
+        this.addFeed(new RssFeed("http://feeds.bbci.co.uk/news/rss.xml", "BBC"));
+        this.addFeed(new RssFeed("http://lemonde.fr/rss/une.xml", "Le Monde"));
+        this.addFeed(new RssFeed("http://ouest-france.fr/rss.xml", "Ouest France"));
     }
 
     //-----------------------------------------------------

@@ -1,9 +1,6 @@
 package fr.unicaen.info.dnr2i.rssapplication;
 
-import android.content.Context;
 import android.os.AsyncTask;
-import android.util.Log;
-import android.widget.Toast;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -12,8 +9,6 @@ import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.logging.Handler;
-import java.util.logging.LogRecord;
 
 import de.nava.informa.core.ChannelIF;
 import de.nava.informa.core.ParseException;

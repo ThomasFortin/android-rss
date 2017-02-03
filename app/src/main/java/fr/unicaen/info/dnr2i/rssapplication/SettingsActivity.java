@@ -1,14 +1,9 @@
 package fr.unicaen.info.dnr2i.rssapplication;
 
 import android.content.SharedPreferences;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.CompoundButton;
-import android.widget.LinearLayout;
-import android.widget.Switch;
-
-import java.util.ArrayList;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 

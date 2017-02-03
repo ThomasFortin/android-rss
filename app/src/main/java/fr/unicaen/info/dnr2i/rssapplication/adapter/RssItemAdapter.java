@@ -12,10 +12,6 @@ import java.util.List;
 import fr.unicaen.info.dnr2i.rssapplication.R;
 import fr.unicaen.info.dnr2i.rssapplication.entity.RssItem;
 
-/**
- * Created by thomas on 25/01/17.
- */
-
 public class RssItemAdapter extends ArrayAdapter<RssItem> {
 
     public RssItemAdapter(Context context, int resource, List<RssItem> items) {

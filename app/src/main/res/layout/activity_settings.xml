@@ -16,25 +16,35 @@
         android:gravity="center_horizontal"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
 
-    <Switch
-        android:id="@+id/switchAutoUpdate"
-        android:text="@string/settings_autoupdate"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="25dp" />
+    <RadioGroup
+        android:id="@+id/radioNetwork"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
 
-    <Switch
-        android:id="@+id/switchWifiUpdate"
-        android:text="@string/settings_wifi_update"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="25dp" />
+        <RadioButton
+            android:id="@+id/switchAutoUpdate"
+            android:text="@string/settings_autoupdate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:onClick="changeSettings" />
 
-    <Switch
-        android:id="@+id/switchNeverUpdate"
-        android:text="@string/settings_never_update"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="25dp" />
+        <RadioButton
+            android:id="@+id/switchWifiUpdate"
+            android:text="@string/settings_wifi_update"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:onClick="changeSettings" />
+
+        <RadioButton
+            android:id="@+id/switchNeverUpdate"
+            android:text="@string/settings_never_update"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:onClick="changeSettings" />
+
+    </RadioGroup>
 
 </LinearLayout>

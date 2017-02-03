@@ -6,6 +6,8 @@ import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.Keep;
+import android.content.SharedPreferences;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -13,10 +15,13 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import java.net.InetAddress;
+import java.net.URI;
+import java.util.ArrayList;
 import java.util.List;
 
 import fr.unicaen.info.dnr2i.rssapplication.adapter.RssItemAdapter;
 import fr.unicaen.info.dnr2i.rssapplication.db.RssReaderManager;
+import fr.unicaen.info.dnr2i.rssapplication.entity.NetworkPreferences;
 import fr.unicaen.info.dnr2i.rssapplication.entity.RssItem;
 
 public class FeedActivity extends AppCompatActivity implements SwipeRefreshLayout.OnRefreshListener {

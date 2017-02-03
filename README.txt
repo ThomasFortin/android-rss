@@ -15,3 +15,4 @@ L'utilisateur peut également rafraîchir le flux RSS en "tirant vers le bas" la
 
 Les flux RSS ainsi que leurs articles associés sont stockés en base de données locale pour une lecture hors-ligne.
 
+Lorsque vous êtes sur une page d'affichage des items d'un flux, la page d'ajout, ou la page des préférences, un bouton "Retour" est disponible en haut à gauche de l'écran pour revenir à l'activité principale : l'affichage de la liste des flux auxquels vous êtes abonné.
